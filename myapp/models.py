@@ -18,6 +18,6 @@ class UserProfile(models.Model):
         db_table = "user_profile"
 
     def __unicode__(self):
-        return u'Profile of user: %s' % self.user.username
+        return u'Profile of user: {0!s}'.format(self.user.username)
 
 
