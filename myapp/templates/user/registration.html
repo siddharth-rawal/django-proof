@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Registration</title>
+
+    {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Registration Form</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% if form.errors %}
+                         <p>Registration errors</p>
+                        {% endif %}
+                        <form method="post" action="/myapp/registration/">
+                            {% csrf_token %}
+                            <fieldset>
+                                <div class="form-group">
+                                    {{ form.first_name }}
+                                    {{ form.first_name.errors.0 }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.last_name }}
+                                    {{ form.last_name.errors.0 }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.username }}
+                                    {{ form.username.errors.0 }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.email }}
+                                    {{ form.email.errors.0 }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.password1 }}
+                                    {{ form.password1.errors.0 }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.password2 }}
+                                    {{ form.password2.errors.0 }}
+                                </div>
+
+                                <!-- Change this to a button or input when using this as a form -->
+                                <input class="btn btn-lg btn-success btn-block" type="submit" value="Register" />
+                                <b>or </b> </br>
+                                <a href="{% url 'django.contrib.auth.views.login' %}" class="">Login</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
